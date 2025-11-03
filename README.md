@@ -3,6 +3,14 @@
 Implementacja algorytmu genetycznego do problemu plecakowego (0/1) w Pythonie.  
 Projekt nastawiony na **eksperymenty w dużej skali**, replikowalność i wygodne I/O (JSON/JSONL).
 
+## Spis treści
+1. [Struktura katalogów](#struktura-katalogów)
+2. [Instalacja](#instalacja)
+3. [Format danych](#format-danych)
+4. [Uruchomienie](#uruchomienie-cli)
+5. [Pliki konfiguracyjne](#pliki-konfiguracyjne-przykład)
+6. [Wyniki](#wyniki)
+
 ## Struktura katalogów
 
 ```bash
