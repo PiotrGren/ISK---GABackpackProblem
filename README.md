@@ -74,6 +74,8 @@ Wiele instancji to plik formatu **.jsonl** gdzie każda linia ma strukturę jak 
 
 ## Uruchomienie (CLI)
 
+> **UWAGA!:** Poniższe polecenia należy uruchomić z katalogu głównego projektu - czyli katalogu ***projekt/** według głównej [struktury katalogów](#struktura-katalogów).
+
 Przykład (pojedynczy run):
 ```bash
 python -m src.cli run-ga \

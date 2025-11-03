@@ -1,0 +1,25 @@
+{
+  "population": 400,
+  "pc": 0.9,
+  "pm": "1/n",
+  "elitism": 2,
+  "selection": { "type": "tournament", "k": 3 },
+  "crossover": "one_point",
+  "mutation": "bit_flip",
+
+  "constraint": { "mode": "repair", "lambda": 10.0 },
+
+  "max_generations": 800,
+  "early_stop": { "patience": 80, "min_delta": 0.0 },
+
+  "runs": 20,
+  "seeds": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
+
+  "subset": {
+    "mode": "none",
+    "size": 2000,
+    "seed": 123
+  },
+
+  "trace": { "store_best_per_gen": true, "store_avg_per_gen": true }
+}
