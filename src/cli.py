@@ -165,6 +165,8 @@ def run_ga(
 
     # Walidacja bez uruchamiania
     dry_run: bool = typer.Option(False, help="Tylko wczytaj i zweryfikuj config/instancje - nie uruchamiaj GA"),
+    time_limit: float = typer.Option(0.0, help="Limit czasu w sekundach (0 = brak limitu)"),
+    log_every: int = typer.Option(20, help="Wypisuj postęp co N generacji (0 = brak)"),
 ):
     """Główna komenda: przygotuj parametry, wczytaj instancje i odpal eksperymenty."""
     # 1) Wczytaj config i zwaliduj
@@ -208,8 +210,8 @@ def run_ga(
         raise typer.Exit(code=1)
 
     # 5) Wywołanie: runner sam strumieniuje instancje i dopisuje do pliku wynikowego
-    run_experiment(instance_path=instance, params=params, out_path=out)
-    print(f"[bold green]Zakończono. Wyniki w:[/bold green] {out}")                                  # type: ignore
+    run_experiment(instance_path=instance, params=params, out_path=out, time_limit_sec=time_limit, log_every=log_every)
+    print(f"[bold white][KONIEC][/bold white] [bold green]Zakończono. Wyniki w:[/bold green] {out}")                                  # type: ignore
     
     
 if __name__ == "__main__":

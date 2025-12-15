@@ -13,7 +13,7 @@ Ten moduł odpowiada za *wszystkie operacje wejścia/wyjścia*:
 
 Jak łączy się z resztą:
 - korzysta z modeli z `src/model.py` (Pydantic) do walidacji struktur danych,
-- będzie używany przez `src/cli.py` (CLI), które woła funkcje z tego pliku, aby:
+- używany przez `src/cli.py` (CLI), które woła funkcje z tego pliku, aby:
   (1) wczytać instancje,
   (2) opcjonalnie zastosować subset (zgodnie z configiem),
   (3) przekazać gotowe obiekty `Instance` do pętli ewolucji (w `runner.py`),
@@ -36,7 +36,7 @@ except Exception:
 from .model import Instance, SubsetConfig
 
 
-# -- JSON utils -------------------------------------------------------------------------------------
+# --- JSON utils -------------------------------------------------------------------------------------
 def _loads(s: Union[str, bytes]) -> Dict:
     """Parse JSON string/bytes -> dict"""
     return _json.loads(s)
@@ -49,7 +49,7 @@ def _dumps(obj: Dict) -> str:
 
 
 
-# -- Wczytywanie instancji ---------------------------------------------------------------------------
+# --- Wczytywanie instancji ---------------------------------------------------------------------------
 def read_json(path: Union[str, Path]) -> Dict:
     """Wczytuje plik JSON (pojedyncza instancja) i zwraca jego zawartość jako słownik."""
     p = Path(path)
@@ -92,7 +92,7 @@ def iter_instances(path: Union[str, Path]) -> Iterator[Instance]:
     
 
 
-# -- Subsetowanie przedmiotów (wybór tylko kilku z całego zbioru) ---------------------------------------
+# --- Subsetowanie przedmiotów (wybór tylko kilku z całego zbioru) ---------------------------------------
 def apply_subset(inst: Instance, subset: Optional[SubsetConfig]) -> Instance:
     """
     Zastosuj reguły subsetowania (none/random/first_k).
@@ -132,7 +132,7 @@ def apply_subset(inst: Instance, subset: Optional[SubsetConfig]) -> Instance:
 
 
 
-# -- Zapis wyników ---------------------------------------------------------------------------------------
+# --- Zapis wyników ---------------------------------------------------------------------------------------
 def write_run_result(run: Dict, out_path: Union[str, Path]) -> None:
     """Dopisz pojedynczy wynik (dict) jako jedną linię w wynikowym JSONL"""
     p = Path(out_path)

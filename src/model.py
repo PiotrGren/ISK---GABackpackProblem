@@ -25,7 +25,7 @@ from pydantic import BaseModel, Field, field_validator
 
 
 
-# -- Modele instancji -------------------------------------------------------------------------
+# --- Modele instancji -------------------------------------------------------------------------
 class Item(BaseModel):
     """Pojedynczy przedmiot w plecaku"""
     id: int
@@ -46,7 +46,7 @@ class Instance(BaseModel):
     
     
     
-# -- Konfiguracja parametrów -------------------------------------------------------------------
+# --- Konfiguracja parametrów -------------------------------------------------------------------
 class SelectionConfig(BaseModel):
     """Konfiguracja selekcji (np. turniejowa)"""
     type: Literal["tournament", "roulette"] = "tournament"
