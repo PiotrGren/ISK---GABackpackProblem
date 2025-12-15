@@ -78,7 +78,7 @@ Wiele instancji to plik formatu **.jsonl** gdzie każda linia ma strukturę jak 
 
 Przykład (pojedynczy run):
 ```bash
-python -m src.cli run-ga \
+python -m src.cli \
   --instance data/instances/toy-2.json \
   --config experiments/configs/base.json \
   --out experiments/results/base.jsonl
@@ -86,7 +86,7 @@ python -m src.cli run-ga \
 
 Nadpisanie parametrów z linii poleceń:
 ```bash
-python -m src.cli run-ga \
+python -m src.cli \
   --instance data/instances/big-1000.json \
   --config experiments/configs/base.json \
   --pop 400 --pc 0.9 --pm 0.01 --elitism 2
@@ -94,6 +94,53 @@ python -m src.cli run-ga \
 
 Seria runów (wiele seedów) można skonfigurować w pliku config.
 
+#### Lista dostępnych subargumentów
+
+Aby sprawdzić listę dostępnych subarguemntów należy z katalogu głównego projektu wykonać polecenie:
+```bash
+python -m src.cli --help
+```
+
+Wynik komendy wygląda nastepująco:
+```bash
+Usage: python -m src.cli [OPTIONS]
+
+ Główna komenda: przygotuj parametry, wczytaj instancje i odpal eksperymenty.
+
+┌─ Options ───────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ --instance         -i                  PATH     Ścieżka do pliku *.json lub *.jsonl z instancjami (domyślnie:       │
+│                                                 data\instances\big-05-inverse-correlation-n2200.json)               │
+│                                                 [default: data\instances\big-05-inverse-correlation-n2200.json]     │
+│ --config           -c                  PATH     Plik konfiguracyjny JSON (domyślnie: experiments\configs\base.json) │
+│                                                 [default: experiments\configs\base.json]                            │
+│ --out              -o                  PATH     Plik wynikowy *.jsonl (dopisywanie; domyślnie:                      │
+│                                                 experiments\results\auto.jsonl)                                     │
+│                                                 [default: experiments\results\auto.jsonl]                           │
+│ --pop                                  INTEGER  population                                                          │
+│ --pc                                   FLOAT    pc                                                                  │
+│ --pm                                   FLOAT    pm (liczba); zamiast "1/n"                                          │
+│ --elitism                              INTEGER  elitism                                                             │
+│ --max-generations                      INTEGER  max_generations                                                     │
+│ --runs                                 INTEGER  liczba uruchomień na instancję                                      │
+│ --selection-type                       TEXT     selection.type: "tournament" lub "roulette"                         │
+│ --selection-k                          INTEGER  selection.k (dla tournament)                                        │
+│ --crossover                            TEXT     crossover: "one_point" lub "uniform"                                │
+│ --mutation                             TEXT     mutation: "bit_flip"                                                │
+│ --constraint-mode                      TEXT     constraint.mode: "repair" lub "penalty"                             │
+│ --lambda                               FLOAT    constraint.lambda (dla penalty)                                     │
+│ --early-patience                       INTEGER  early_stop.patience                                                 │
+│ --early-delta                          FLOAT    early_stop.min_delta                                                │
+│ --subset-mode                          TEXT     subset.mode: "none" | "random" | "first_k"                          │
+│ --subset-size                          INTEGER  subset.size                                                         │
+│ --subset-seed                          INTEGER  subset.seed                                                         │
+│ --seeds-csv                            TEXT     Nadpisz seeds: np. "0,1,2,3"                                        │
+│ --dry-run              --no-dry-run             Tylko wczytaj i zweryfikuj config/instancje - nie uruchamiaj GA     │
+│                                                 [default: no-dry-run]                                               │
+│ --time-limit                           FLOAT    Limit czasu w sekundach (0 = brak limitu) [default: 0.0]            │
+│ --log-every                            INTEGER  Wypisuj postęp co N generacji (0 = brak) [default: 20]              │
+│ --help                                          Show this message and exit.                                         │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
 
 ## Pliki konfiguracyjne (przykład)
 
